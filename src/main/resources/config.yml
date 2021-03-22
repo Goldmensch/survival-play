@@ -1,0 +1,11 @@
+farmlimiter:
+  witherskullfarm-disable: true
+links:
+  discord: 'https://discord.gg/AaguZBXSnr'
+rtp:
+  lastteleports: 3
+sleepskip:
+  mustSleepInPercent: 30
+  skipTo: 1000
+  skipTime: 70
+  stopThunder: true

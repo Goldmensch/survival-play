@@ -1,0 +1,67 @@
+name: Survival-Play
+version: @version@
+main: de.nick.survivalplay.SurvivalPlay
+api-version: 1.16
+authors: [ goldmensch ]
+description: The Survival Play Server System
+depend: [SmartClans]
+load: POSTWORLD
+
+commands:
+  tpa:
+    description: Teleport you to another player
+  gamemode:
+    description: Gamemodecommand
+    aliases: gm
+  spawn:
+    description: teleport you to the spawn
+  msg:
+    description: send a player a private message
+  r:
+    description: answer a player with of private message
+  discord:
+    description: show you an invite for our discord
+    aliases: [ dc ]
+  rtp:
+    description: teleports you to a random player
+  survivalplay:
+    description: survivalplay maincommand
+  onlineplayers:
+    description: gets a list and a amount of online players
+    aliases: [online, players]
+  sethome:
+    description: set your public or private home
+  delhome:
+    description: delets your public or private home
+
+permissions:
+  gamemode.self:
+    description: Change gamemode of himself
+  gamemode.other:
+    description: Change gamemode of someone else
+  gamemode.useall:
+    description: useall -> gives you permission to use all gamemodes, childrens to specific(s)
+    children:
+      gamemode.survival: true
+      gamemode.creative: true
+      gamemode.adventure: true
+      gamemode.spectator: true
+  rtp.use:
+    description: allows you to use /rtp
+  survivalplay.reload:
+    description: allows you to reload the survival play plugin
+  server.owner:
+    description: Gives you the rank owner
+  server.admin:
+    description: Gives you the rank admin
+  server.dev:
+    description: Gives you the rank developer
+  server.mod:
+    description: Gives you the rank moderator
+  server.sup:
+    description: Gives you the rank supporter
+  server.builder:
+    description: Gives you the rank builder
+  server.vip:
+    description: Gives you the rank vip
+
