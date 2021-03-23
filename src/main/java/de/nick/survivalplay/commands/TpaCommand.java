@@ -80,42 +80,43 @@ public class TpaCommand implements CommandExecutor {
                 target.spigot().sendMessage(new ComponentBuilder(prefix)
                         .append("Der Spieler ").color(Colors.TPA.get())
                         .append(player.getName()).color(Colors.TPA_PLAYER.get())
-                        .append(" hat deine TPA angenommen und wird in 5s zu dir teleportiert.").color(Colors.TPA.get())
+                        .append(" hat deine TPA angenommen und du wirst in 5s zu ihm teleportiert. Nicht bewegen!").color(Colors.TPA.get())
                         .create());
 
                 // send tpa info to player
                 player.spigot().sendMessage(new ComponentBuilder(prefix)
                         .append("Du hast die TPA von ").color(Colors.TPA.get())
                         .append(target.getName()).color(Colors.TPA_PLAYER.get())
-                        .append(" angenommen und wirst in 5s teleportiert. Nicht bewegen!").color(Colors.TPA.get())
+                        .append(" angenommen, er wird in 5s zu dir teleportiert").color(Colors.TPA.get())
                         .create());
 
                 // add player to confirmedTeleports
-                confirmedTeleports.add(player.getName());
+                confirmedTeleports.add(target.getName());
+                // remove from teleports
+                teleports.remove(player.getName());
 
                 // teleport
                 Bukkit.getScheduler().runTaskLater(main, () -> {
                     // check if teleport is cancelled
-                    if (confirmedTeleports.contains(player.getName())) {
+                    if (confirmedTeleports.contains(target.getName())) {
                         // teleport - async
-                        CompletableFuture<Boolean> task = player.teleportAsync(target.getLocation());
+                        CompletableFuture<Boolean> task = target.teleportAsync(player.getLocation());
 
                         // after teleport
                         task.thenRun(() -> {
                             // send player message
-                            player.spigot().sendMessage(new ComponentBuilder(prefix)
+                            target.spigot().sendMessage(new ComponentBuilder(prefix)
                                     .append("Du wurdest zu ").color(Colors.TPA.get())
-                                    .append(target.getName()).color(Colors.TPA_PLAYER.get())
+                                    .append(player.getName()).color(Colors.TPA_PLAYER.get())
                                     .append(" teleportiert.").color(Colors.TPA.get())
                                     .create());
 
                             // send sender message
-                            target.spigot().sendMessage(new ComponentBuilder(prefix)
+                            player.spigot().sendMessage(new ComponentBuilder(prefix)
                                     .append("Der Spieler ").color(Colors.TPA.get())
-                                    .append(player.getName()).color(Colors.TPA_PLAYER.get())
+                                    .append(target.getName()).color(Colors.TPA_PLAYER.get())
                                     .append(" wurde zu dir teleportiert.").color(Colors.TPA.get())
                                     .create());
-                            teleports.remove(player.getName());
                             confirmedTeleports.remove(player.getName());
                         });
                     }
@@ -221,8 +222,7 @@ public class TpaCommand implements CommandExecutor {
     public void cancelTeleport(Player player) {
         // check if the player in a teleport
         if (confirmedTeleports.contains(player.getName())) {
-            // remove player from teleports
-            teleports.remove(player.getName());
+            // remove player from confirmed teleports
             confirmedTeleports.remove(player.getName());
             // send player cancel message
             player.spigot().sendMessage(new ComponentBuilder(prefix)

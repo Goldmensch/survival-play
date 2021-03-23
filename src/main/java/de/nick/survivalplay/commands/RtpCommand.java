@@ -48,7 +48,7 @@ public class RtpCommand implements CommandExecutor {
             // get list of visible players
             List<Player> visiblePlayers = PluginUtils.getVisiblePlayers();
             // if 1 or less playes visibel online - break
-            if (visiblePlayers.size() <= 1) {
+            if (visiblePlayers.size() <= 2) {
                 sender.sendMessage(new ComponentBuilder(prefix)
                         .append("Zu wenig Spieler online!").color(ChatColor.RED)
                         .create());

@@ -118,7 +118,7 @@ public class GamemodeCommand implements CommandExecutor, TabCompleter {
                     sender.spigot().sendMessage(Messages.NO_PERMISSONS.get());
                     return true;
                 }
-                target.setGameMode(GameMode.ADVENTURE);
+                target.setGameMode(GameMode.SPECTATOR);
                 break;
             // send if gamemode is invalid
             default:

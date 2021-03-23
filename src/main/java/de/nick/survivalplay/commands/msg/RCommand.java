@@ -46,14 +46,16 @@ public class RCommand implements CommandExecutor {
                 target = Bukkit.getPlayer(targetName);
             }
             // check if target still online or not vanish
-            if ((target == null) || (PluginUtils.isVanished((Player) target))) {
-                sender.sendMessage(new ComponentBuilder(prefix)
-                        .append("Der Spieler ").color(ChatColor.RED)
-                        .append(args[0]).color(Colors.PLAYER_ERROR.get())
-                        .append(" ist nicht mehr online!").color(ChatColor.RED)
-                        .create());
-                survivalPlay.getMsgCommand().getPartners().remove(sender.getName());
-                return true;
+            if(sender instanceof Player) {
+                if ((target == null) || (PluginUtils.isVanished((Player) sender))) {
+                    sender.sendMessage(new ComponentBuilder(prefix)
+                            .append("Der Spieler ").color(ChatColor.RED)
+                            .append(args[0]).color(Colors.PLAYER_ERROR.get())
+                            .append(" ist nicht mehr online!").color(ChatColor.RED)
+                            .create());
+                    survivalPlay.getMsgCommand().getPartners().remove(sender.getName());
+                    return true;
+                }
             }
             // build message
             StringBuilder msg = new StringBuilder(256);
@@ -64,7 +66,7 @@ public class RCommand implements CommandExecutor {
             // send to sender
             sender.sendMessage(new ComponentBuilder(prefix)
                     .append("du > ").color(Colors.MSG_INFO.get())
-                    .append(target.getName()).color(Colors.MSG_INFO.get())
+                    .append(targetName).color(Colors.MSG_INFO.get())
                     .append(": ").color(Colors.MSG.get())
                     .append(msg.toString()).color(Colors.MSG.get())
                     .create());
