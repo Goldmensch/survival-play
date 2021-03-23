@@ -23,9 +23,8 @@ public class RtpCommand implements CommandExecutor {
     private final TextComponent prefix;
 
     private final List<String> lastPlayers;
-    private String lastPlayer;
-
     private final SurvivalPlay survivalPlay;
+    private String lastPlayer;
 
     public RtpCommand(SurvivalPlay survivalPlay) {
         prefix = new TextComponent("[RTP] ");

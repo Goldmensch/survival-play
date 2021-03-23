@@ -18,7 +18,7 @@ public class MessageFormatter {
 
     public TextComponent getUpdatedChatPrefix(Player player) {
         // check if player is in clan
-        if(smartclansAPI.getPlayerapi().isInClan(player)) {
+        if (smartclansAPI.getPlayerapi().isInClan(player)) {
             // return Prefix with Clanname and Playername
             return Component.text()
                     .append(Component.text("[").color(NamedTextColor.DARK_GREEN))
@@ -27,7 +27,7 @@ public class MessageFormatter {
                     .append(Component.text(player.getName())).color(rankHandler.getTeamColor(player))
                     .build();
 
-        }else {
+        } else {
             // return Prefix with "Wilder" as Prefix and Playername
             return Component.text()
                     .append(Component.text("[ohne Clan] ").color(NamedTextColor.DARK_GREEN))

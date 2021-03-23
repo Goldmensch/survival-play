@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 
 public class SmartClansListeners implements Listener {
 
-    private RankHandler rankHandler;
+    private final RankHandler rankHandler;
 
     public SmartClansListeners(SmartclansAPI smartclansAPI) {
         rankHandler = new RankHandler(smartclansAPI);
@@ -28,7 +28,7 @@ public class SmartClansListeners implements Listener {
 
     @EventHandler
     public void onClanDelete(ClanDeleteEvent event) {
-        for(Player current : Bukkit.getOnlinePlayers()) {
+        for (Player current : Bukkit.getOnlinePlayers()) {
             rankHandler.updateTabName(current);
         }
     }

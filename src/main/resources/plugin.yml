@@ -4,7 +4,7 @@ main: de.nick.survivalplay.SurvivalPlay
 api-version: 1.16
 authors: [ goldmensch ]
 description: The Survival Play Server System
-depend: [SmartClans]
+depend: [ SmartClans ]
 load: POSTWORLD
 
 commands:
@@ -28,11 +28,13 @@ commands:
     description: survivalplay maincommand
   onlineplayers:
     description: gets a list and a amount of online players
-    aliases: [online, players]
+    aliases: [ online, players ]
   sethome:
     description: set your public or private home
   delhome:
     description: delets your public or private home
+  home:
+    description: teleports you to a private or public home
 
 permissions:
   gamemode.self:

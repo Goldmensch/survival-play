@@ -13,14 +13,11 @@ import java.util.Objects;
 @SuppressWarnings("deprecation")
 public class NightSkipHandler {
 
-    private int sleepingPlayers = 0;
-
     private final SurvivalPlay survivalPlay;
     private final SmoothNightSkip smoothNightSkip;
-
-    private boolean isSkipping = false;
-
     private final TextComponent prefix;
+    private int sleepingPlayers = 0;
+    private boolean isSkipping = false;
 
 
     public NightSkipHandler(SurvivalPlay survivalPlay) {
@@ -44,7 +41,13 @@ public class NightSkipHandler {
             if (survivalPlay.getConfigHandler().stopThunderEnable()) {
                 if (Objects.requireNonNull(Bukkit.getServer().getWorld("world")).hasStorm()) {
                     Objects.requireNonNull(Bukkit.getServer().getWorld("world")).setStorm(false);
+                    Bukkit.broadcast(new ComponentBuilder(prefix)
+                            .append("Der Sturm wurde beendet").color(Colors.NIGHTSKIP.get())
+                            .create());
                 }
+            }
+            if (Objects.requireNonNull(Bukkit.getServer().getWorld("world")).getTime() <= 12541) {
+                return;
             }
             // skip night
             smoothNightSkip.skip(survivalPlay.getConfigHandler().getSkipTo());
@@ -71,7 +74,6 @@ public class NightSkipHandler {
     private boolean enoughSleeping() {
         float percent = survivalPlay.getConfigHandler().getHowMuchPlayerMustSleept() / 100F;
         int mustSleep = Math.round(percent * PluginUtils.getVisiblePlayers().size());
-        System.out.println(mustSleep);
         return sleepingPlayers >= mustSleep;
     }
 

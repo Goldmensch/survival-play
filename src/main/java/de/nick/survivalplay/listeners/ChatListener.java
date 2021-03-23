@@ -5,11 +5,10 @@ import de.nick.survivalplay.text.MessageFormatter;
 import de.nick.survivalplay.text.RankHandler;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
+@SuppressWarnings("deprecation")
 public class ChatListener implements Listener {
 
     private final MessageFormatter messageFormatter;

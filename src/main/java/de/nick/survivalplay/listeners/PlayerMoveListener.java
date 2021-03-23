@@ -21,6 +21,7 @@ public class PlayerMoveListener implements Listener {
                 || (event.getFrom().getBlockX() != event.getTo().getBlockX())) {
             main.getTpaCommand().cancelTeleport(event.getPlayer());
             main.getSpawnCommand().cancelTeleport(event.getPlayer());
+            main.getHomeCommand().cancelTeleport(event.getPlayer());
         }
 
     }

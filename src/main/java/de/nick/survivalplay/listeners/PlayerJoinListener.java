@@ -1,10 +1,8 @@
 package de.nick.survivalplay.listeners;
 
-import de.nick.smartclans.api.SmartclansAPI;
 import de.nick.survivalplay.SurvivalPlay;
 import de.nick.survivalplay.storage.IStorage;
 import de.nick.survivalplay.text.RankHandler;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -23,6 +21,7 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         rankHandler.updateTabName(event.getPlayer());
         storage.setPlayerData(event.getPlayer());
+        storage.save();
     }
 
 }

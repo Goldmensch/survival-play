@@ -2,7 +2,6 @@ package de.nick.survivalplay.commands;
 
 import de.nick.survivalplay.Colors;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -25,7 +24,7 @@ public class OnlinePlayersCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         List<String> playernames = new ArrayList<>();
-        for(Player current : Bukkit.getOnlinePlayers()) {
+        for (Player current : Bukkit.getOnlinePlayers()) {
             playernames.add(current.getName());
         }
         sender.sendMessage(Component.text()

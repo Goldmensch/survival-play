@@ -3,6 +3,7 @@ package de.nick.survivalplay;
 import de.nick.smartclans.api.SmartclansAPI;
 import de.nick.survivalplay.commands.*;
 import de.nick.survivalplay.commands.home.DelhomeCommand;
+import de.nick.survivalplay.commands.home.HomeCommand;
 import de.nick.survivalplay.commands.home.SethomeCommand;
 import de.nick.survivalplay.commands.msg.MsgCommand;
 import de.nick.survivalplay.commands.msg.RCommand;
@@ -33,6 +34,7 @@ public final class SurvivalPlay extends JavaPlugin {
     private SethomeCommand sethomeCommand;
     private OnlinePlayersCommand onlinePlayersCommand;
     private DelhomeCommand delhomeCommand;
+    private HomeCommand homeCommand;
 
     private PlayerMoveListener playerMoveListener;
     private EntitySpawnListener entitySpawnListener;
@@ -59,13 +61,15 @@ public final class SurvivalPlay extends JavaPlugin {
         initVariables();
         // register commands
         registerCommands();
+        //register tab completer
+        registerTabCompleter();
         // register listener
         registerListener();
         // check and build config
         configHandler.checkAndBuild();
         // sets all players tablist name
         RankHandler rankHandler = new RankHandler(smartclansAPI);
-        for(Player player : Bukkit.getOnlinePlayers()) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
             rankHandler.updateTabName(player);
         }
 
@@ -90,6 +94,15 @@ public final class SurvivalPlay extends JavaPlugin {
         Objects.requireNonNull(getCommand("sethome")).setExecutor(sethomeCommand);
         Objects.requireNonNull(getCommand("onlineplayers")).setExecutor(onlinePlayersCommand);
         Objects.requireNonNull(getCommand("delhome")).setExecutor(delhomeCommand);
+        Objects.requireNonNull(getCommand("home")).setExecutor(homeCommand);
+    }
+
+    //register TabCompleter
+    private void registerTabCompleter() {
+        Objects.requireNonNull(getCommand("home")).setTabCompleter(homeCommand);
+        Objects.requireNonNull(getCommand("delhome")).setTabCompleter(delhomeCommand);
+        Objects.requireNonNull(getCommand("sethome")).setTabCompleter(sethomeCommand);
+
     }
 
     //register listener
@@ -131,6 +144,7 @@ public final class SurvivalPlay extends JavaPlugin {
         sethomeCommand = new SethomeCommand(this);
         onlinePlayersCommand = new OnlinePlayersCommand();
         delhomeCommand = new DelhomeCommand(this);
+        homeCommand = new HomeCommand(this);
         // listener
         playerMoveListener = new PlayerMoveListener(this);
         entitySpawnListener = new EntitySpawnListener(this);
@@ -176,6 +190,10 @@ public final class SurvivalPlay extends JavaPlugin {
 
     public SmartclansAPI getSmartclansAPI() {
         return smartclansAPI;
+    }
+
+    public HomeCommand getHomeCommand() {
+        return homeCommand;
     }
 }
 
