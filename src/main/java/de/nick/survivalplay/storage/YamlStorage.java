@@ -1,6 +1,7 @@
 package de.nick.survivalplay.storage;
 
 import org.bukkit.Location;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 
 public class YamlStorage implements IStorage {
 
-    private final YamlConfiguration config;
+    private final FileConfiguration config;
     private final File file;
 
     // constructor
@@ -79,7 +80,12 @@ public class YamlStorage implements IStorage {
 
     @Override
     public String getUUID(String playername) {
-        return config.getString(YamlStoragePaths.PLAYER_DATA_NAME.getPath() + "." + playername + ".uuid");
+        for(String name : Objects.requireNonNull(config.getConfigurationSection(YamlStoragePaths.PLAYER_DATA_NAME.getPath())).getKeys(false)) {
+            if(name.equalsIgnoreCase(playername)) {
+                return config.getString(YamlStoragePaths.PLAYER_DATA_NAME.getPath() + "." + name + ".uuid");
+            }
+        }
+        return null;
     }
 
     @Override
