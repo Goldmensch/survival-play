@@ -1,6 +1,7 @@
 package de.nick.survivalplay;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.MetadataValue;
 
@@ -17,6 +18,7 @@ public class PluginUtils {
         return false;
     }
 
+    // get all visible players
     public static List<Player> getVisiblePlayers() {
         List<Player> players = new ArrayList<>();
         for (Player target : Bukkit.getOnlinePlayers()) {
@@ -25,6 +27,16 @@ public class PluginUtils {
             }
         }
         return players;
+    }
+
+    public static List<Player> getAllSurvivalPlayers(List<Player> players) {
+        List<Player> survivalPlayers = new ArrayList<>();
+        for (Player current : players) {
+            if(current.getGameMode() == GameMode.SURVIVAL) {
+                survivalPlayers.add(current);
+            }
+        }
+        return survivalPlayers;
     }
 
 }

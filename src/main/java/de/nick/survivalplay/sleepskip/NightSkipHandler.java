@@ -72,16 +72,14 @@ public class NightSkipHandler {
 
     // check if enough players sleept
     private boolean enoughSleeping() {
-        float percent = survivalPlay.getConfigHandler().getHowMuchPlayerMustSleept() / 100F;
-        int mustSleep = Math.round(percent * PluginUtils.getVisiblePlayers().size());
-        return sleepingPlayers >= mustSleep;
+        return sleepingPlayers >= needToSleep();
     }
 
     // returns how many players must sleep
     public int needToSleep() {
         float percent = survivalPlay.getConfigHandler().getHowMuchPlayerMustSleept() / 100F;
-        int mustSleep = Math.round(percent * PluginUtils.getVisiblePlayers().size());
-        return sleepingPlayers - mustSleep;
+        int mustSleep = Math.round(percent * PluginUtils.getAllSurvivalPlayers(PluginUtils.getVisiblePlayers()).size());
+        return mustSleep - sleepingPlayers;
     }
 
     // set isSkipping

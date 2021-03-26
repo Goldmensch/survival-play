@@ -55,6 +55,8 @@ public final class SurvivalPlay extends JavaPlugin {
 
     private SmartclansAPI smartclansAPI;
 
+    private Broadcaster broadcaster;
+
     @Override
     public void onEnable() {
         // init variables
@@ -72,6 +74,8 @@ public final class SurvivalPlay extends JavaPlugin {
         for (Player player : Bukkit.getOnlinePlayers()) {
             rankHandler.updateTabName(player);
         }
+        // start broadcasts
+        broadcaster.start();
 
     }
 
@@ -154,6 +158,8 @@ public final class SurvivalPlay extends JavaPlugin {
         chatListener = new ChatListener(smartclansAPI);
         smartClansListeners = new SmartClansListeners(smartclansAPI);
         playerJoinListener = new PlayerJoinListener(this);
+        //others
+        broadcaster = new Broadcaster(this);
     }
 
     public TpaCommand getTpaCommand() {

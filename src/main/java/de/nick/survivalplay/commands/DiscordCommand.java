@@ -34,4 +34,8 @@ public class DiscordCommand implements CommandExecutor {
                 .create());
         return false;
     }
+
+    public TextComponent getPrefix() {
+        return prefix;
+    }
 }

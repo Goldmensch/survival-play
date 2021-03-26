@@ -23,7 +23,8 @@ public enum Colors {
     NIGHTSKIP_NUMBER("#00bd12"),
     HOME("#4db2ff"),
     INFO("#4affc0"),
-    INFO_LIST("#00cc85");
+    INFO_LIST("#00cc85"),
+    DONATION_LINK("#ffdf3d");
 
 
     private final String hex;

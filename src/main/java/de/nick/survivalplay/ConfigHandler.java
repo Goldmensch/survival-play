@@ -77,4 +77,9 @@ public class ConfigHandler {
         return main.getConfig().getBoolean("sleepskip.stopThunder");
     }
 
+    //return the donation link
+    public String getDonationLink() {
+        return main.getConfig().getString("links.donation");
+    }
+
 }
