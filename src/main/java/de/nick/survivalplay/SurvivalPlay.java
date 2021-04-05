@@ -7,6 +7,7 @@ import de.nick.survivalplay.commands.home.HomeCommand;
 import de.nick.survivalplay.commands.home.SethomeCommand;
 import de.nick.survivalplay.commands.msg.MsgCommand;
 import de.nick.survivalplay.commands.msg.RCommand;
+import de.nick.survivalplay.commands.RaidCommand;
 import de.nick.survivalplay.listeners.*;
 import de.nick.survivalplay.sleepskip.NightSkipHandler;
 import de.nick.survivalplay.storage.YamlStorage;
@@ -35,6 +36,7 @@ public final class SurvivalPlay extends JavaPlugin {
     private OnlinePlayersCommand onlinePlayersCommand;
     private DelhomeCommand delhomeCommand;
     private HomeCommand homeCommand;
+    private RaidCommand raidCommand;
 
     private PlayerMoveListener playerMoveListener;
     private EntitySpawnListener entitySpawnListener;
@@ -99,6 +101,7 @@ public final class SurvivalPlay extends JavaPlugin {
         Objects.requireNonNull(getCommand("onlineplayers")).setExecutor(onlinePlayersCommand);
         Objects.requireNonNull(getCommand("delhome")).setExecutor(delhomeCommand);
         Objects.requireNonNull(getCommand("home")).setExecutor(homeCommand);
+        Objects.requireNonNull(getCommand("raid")).setExecutor(raidCommand);
     }
 
     //register TabCompleter
@@ -149,6 +152,7 @@ public final class SurvivalPlay extends JavaPlugin {
         onlinePlayersCommand = new OnlinePlayersCommand();
         delhomeCommand = new DelhomeCommand(this);
         homeCommand = new HomeCommand(this);
+        raidCommand = new RaidCommand(this);
         // listener
         playerMoveListener = new PlayerMoveListener(this);
         entitySpawnListener = new EntitySpawnListener(this);

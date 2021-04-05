@@ -2,7 +2,7 @@ farmlimiter:
   witherskullfarm-disable: true
 links:
   discord: 'https://discord.gg/AaguZBXSnr'
-  donation: 'https://nocheinfügen.com'
+  donation: 'https://paypal.me/pools/c/8uur9Y9sLp'
 rtp:
   lastteleports: 3
 sleepskip:
@@ -10,3 +10,12 @@ sleepskip:
   skipTo: 1000
   skipTime: 70
   stopThunder: true
+raid:
+  raid-cooldown: 5H
+  raid-duration: 5M
+  send-time-message-at-time-left:
+    - 4M
+    - 3M
+    - 2M
+    - 1M
+    - 0M

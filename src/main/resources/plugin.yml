@@ -35,6 +35,8 @@ commands:
     description: delets your public or private home
   home:
     description: teleports you to a private or public home
+  raid:
+    description: manage Raids
 
 permissions:
   gamemode.self:
@@ -66,4 +68,8 @@ permissions:
     description: Gives you the rank builder
   server.vip:
     description: Gives you the rank vip
+  server.manager:
+    description: Gives you the rank manager
+  colorcodes.use:
+    description: allows you to use color codes in chat
 

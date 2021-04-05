@@ -117,7 +117,7 @@ public class TpaCommand implements CommandExecutor {
                                     .append(target.getName()).color(Colors.TPA_PLAYER.get())
                                     .append(" wurde zu dir teleportiert.").color(Colors.TPA.get())
                                     .create());
-                            confirmedTeleports.remove(player.getName());
+                            confirmedTeleports.remove(target.getName());
                         });
                     }
                 }, 100);

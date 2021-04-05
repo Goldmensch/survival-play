@@ -24,7 +24,9 @@ public enum Colors {
     HOME("#4db2ff"),
     INFO("#4affc0"),
     INFO_LIST("#00cc85"),
-    DONATION_LINK("#ffdf3d");
+    DONATION_LINK("#ffdf3d"),
+    RAID("#f7847c"),
+    RAID_CLAN("#bf0d00");
 
 
     private final String hex;

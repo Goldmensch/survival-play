@@ -27,8 +27,8 @@ public class Broadcaster {
     private Component buildDonationComponent() {
         return Component.text()
                 .append(Component.text("[Spenden] ").color(TextColor.fromHexString("#a88c00")))
-                .append(Component.text("Dir gefällt der Server und du möchtest uns freiwillig unterstützen? Dann spende doch mal ein paar Euro. " +
-                        "Ihr bekommt dadurch natürlich keine Vorteile, aber uns hilft es den Server weiterzufinanzieren. Link: ")
+                .append(Component.text("Du und deine nicht vorhandenen Freunde feieren den Server und wollt uns unterstützen? " +
+                        "Dann spendent doch mal ein paar Euro, uns hilft es den Server weiterzufinanzieren. Link: ")
                 .color(NamedTextColor.GOLD))
                 .append(Component.text(survivalPlay.getConfigHandler().getDonationLink()).color(Colors.DONATION_LINK.getTextColor())
                         .clickEvent(ClickEvent.openUrl(survivalPlay.getConfigHandler().getDonationLink())))

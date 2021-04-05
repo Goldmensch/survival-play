@@ -4,6 +4,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Objects;
 
 public class ConfigHandler {
@@ -80,6 +81,15 @@ public class ConfigHandler {
     //return the donation link
     public String getDonationLink() {
         return main.getConfig().getString("links.donation");
+    }
+
+    //return the raidtime
+    public String getRaidMaxTime() {
+        return main.getConfig().getString("raid.raid-duration");
+    }
+
+    public List<String> getRaidtimeLeftMessageTimes() {
+        return main.getConfig().getStringList("raid.send-time-message-at-time-left");
     }
 
 }
