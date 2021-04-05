@@ -46,7 +46,7 @@ public class RCommand implements CommandExecutor {
                 target = Bukkit.getPlayer(targetName);
             }
             // check if target still online or not vanish
-            if(sender instanceof Player) {
+            if (sender instanceof Player) {
                 if ((target == null) || (PluginUtils.isVanished((Player) sender))) {
                     sender.sendMessage(new ComponentBuilder(prefix)
                             .append("Der Spieler ").color(ChatColor.RED)

@@ -31,7 +31,7 @@ public class RankHandler {
         if (player.hasPermission("server.sup")) {
             return Component.text("[Sup] ").color(NamedTextColor.YELLOW);
         }
-        if(player.hasPermission("server.manager")) {
+        if (player.hasPermission("server.manager")) {
             return Component.text("[Manager] ").color(TextColor.fromHexString("#ff575c"));
         }
         if (player.hasPermission("server.builder")) {
@@ -60,7 +60,7 @@ public class RankHandler {
         if (player.hasPermission("server.sup")) {
             return NamedTextColor.YELLOW;
         }
-        if(player.hasPermission("server.manager")) {
+        if (player.hasPermission("server.manager")) {
             return TextColor.fromHexString("#ff575c");
         }
         if (player.hasPermission("server.builder")) {

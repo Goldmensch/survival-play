@@ -213,7 +213,7 @@ public class HomeCommand implements CommandExecutor, TabCompleter {
             Set<String> uuids = storage.getAllUuidsWith(false);
             for (String uuid : uuids) {
                 String name = storage.getName(uuid);
-                if(name == null) continue;
+                if (name == null) continue;
                 if (name.startsWith(args[1])) completion.add(name);
             }
         }

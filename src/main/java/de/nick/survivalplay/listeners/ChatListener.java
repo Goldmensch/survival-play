@@ -31,7 +31,7 @@ public class ChatListener implements Listener {
     }
 
     private Component getFormattedMessage(Component message, Player player) {
-        if(player.hasPermission("colorcodes.use")) {
+        if (player.hasPermission("colorcodes.use")) {
             String msgString = LegacyComponentSerializer.legacyAmpersand().serialize(message);
             return LegacyComponentSerializer.legacyAmpersand().deserialize(msgString);
         }

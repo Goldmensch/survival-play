@@ -32,11 +32,15 @@ public class PluginUtils {
     public static List<Player> getAllSurvivalPlayers(List<Player> players) {
         List<Player> survivalPlayers = new ArrayList<>();
         for (Player current : players) {
-            if(current.getGameMode() == GameMode.SURVIVAL) {
+            if (current.getGameMode() == GameMode.SURVIVAL) {
                 survivalPlayers.add(current);
             }
         }
         return survivalPlayers;
+    }
+
+    public static String parseISOISO8601Time(String text) {
+        return "PT" + text;
     }
 
 }

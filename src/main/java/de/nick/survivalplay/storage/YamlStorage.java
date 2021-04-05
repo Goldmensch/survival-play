@@ -80,8 +80,8 @@ public class YamlStorage implements IStorage {
 
     @Override
     public String getUUID(String playername) {
-        for(String name : Objects.requireNonNull(config.getConfigurationSection(YamlStoragePaths.PLAYER_DATA_NAME.getPath())).getKeys(false)) {
-            if(name.equalsIgnoreCase(playername)) {
+        for (String name : Objects.requireNonNull(config.getConfigurationSection(YamlStoragePaths.PLAYER_DATA_NAME.getPath())).getKeys(false)) {
+            if (name.equalsIgnoreCase(playername)) {
                 return config.getString(YamlStoragePaths.PLAYER_DATA_NAME.getPath() + "." + name + ".uuid");
             }
         }

@@ -29,19 +29,19 @@ public class Broadcaster {
                 .append(Component.text("[Spenden] ").color(TextColor.fromHexString("#a88c00")))
                 .append(Component.text("Du und deine nicht vorhandenen Freunde feieren den Server und wollt uns unterstützen? " +
                         "Dann spendent doch mal ein paar Euro, uns hilft es den Server weiterzufinanzieren. Link: ")
-                .color(NamedTextColor.GOLD))
+                        .color(NamedTextColor.GOLD))
                 .append(Component.text(survivalPlay.getConfigHandler().getDonationLink()).color(Colors.DONATION_LINK.getTextColor())
                         .clickEvent(ClickEvent.openUrl(survivalPlay.getConfigHandler().getDonationLink())))
                 .build();
     }
 
-    public void start(){
+    public void start() {
         Component disord = buildDiscordComponent();
         Component donation = buildDonationComponent();
 
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(survivalPlay, () -> Bukkit.getServer().sendMessage(disord),0, 36000);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(survivalPlay, () -> Bukkit.getServer().sendMessage(disord), 0, 36000);
 
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(survivalPlay, () -> Bukkit.getServer().sendMessage(donation),12000, 36000);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(survivalPlay, () -> Bukkit.getServer().sendMessage(donation), 12000, 36000);
     }
 
 }
